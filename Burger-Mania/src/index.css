@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Font Styles*/
+@font-face {
+  font-family: "Inria-Sans";
+  src: url("/public/InriaSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inria-Sans";
+  src: url("/public/InriaSans-Bold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inria-Sans";
+  src: url("/public/InriaSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+body {
+  font-family: "Inria-Sans";
+  font-weight: 400;
+  background: rgb(100, 0, 123);
+  background: radial-gradient(
+    circle,
+    rgba(100, 0, 123, 1) 0%,
+    rgba(62, 20, 86, 1) 100%
+  );
+  overflow: hidden;
+}
+@layer components {
+  .container {
+    @apply grid justify-center pt-36 h-screen w-screen;
+  }
+  .line{
+    @apply border-b-[1px] border-white/[0.2]
+  }
+  
+}
