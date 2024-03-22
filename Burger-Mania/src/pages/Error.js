@@ -1,15 +1,15 @@
 import {PrimaryBtn} from "../components";
 
-const Home = () => {
+const Error = () => {
   return (
     <div className="container">
       <div className=" text-white grid place-items-center h-fit gap-y-8 md:gap-y-10">
         <h2 className="text-2xl md:text-3xl capitalize tracking-wide">
-          Welcome to Burger Mania
+          There was an error :-
         </h2>
-        <PrimaryBtn link="/base" text="create your burger"/>
+        <PrimaryBtn link="/" text="return" />
       </div>
     </div>
   );
 };
-export default Home;
+export default Error;

@@ -40,7 +40,7 @@ body {
 }
 @layer components {
   .container {
-    @apply grid justify-center pt-36 h-screen w-screen;
+    @apply grid justify-center pt-28 h-screen w-screen mx-auto;
   }
   .line{
     @apply border-b-[1px] border-white/[0.2]
