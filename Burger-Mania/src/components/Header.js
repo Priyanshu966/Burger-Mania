@@ -1,13 +1,21 @@
 import Logo from "./Logo";
+import {motion} from "framer-motion";
 
 const Header = () => {
   return (
-    <div className="text-white">
+    <div>
       <div className="w-[90vw]  mx-auto  flex items-center ">
-        <div className=''>
+        <div className="">
           <Logo />
         </div>
-        <h2 className="w-screen py-2 ml-3 line">Burger Mania</h2>
+        <motion.h2
+          initial={{y: -250}}
+          animate={{y: -5}}
+          transition={{type: "spring", stiffness: 120, delay: 0.2}}
+          className="w-screen py-2 ml-3 line text-primary"
+        >
+          Burger Mania
+        </motion.h2>
       </div>
     </div>
   );

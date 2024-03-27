@@ -1,39 +1,44 @@
 import {Link} from "react-router-dom";
-import {ItemMenu, SecondaryBtn} from "../components";
+import {MdKeyboardArrowRight} from "react-icons/md";
+import { SecondaryBtn} from "../components";
+import { pageVariant,listVariant } from "../utils/variance";
+import { motion } from "framer-motion";
 
 const Fillings = ({isFillings, handleFillings}) => {
   const fillings = [
-    "mushrooms",
+    "mayonnaise",
     "peppers",
     "onions",
-    "olives",
+    "cabbage",
     "extra cheese",
     "tomatoes",
   ];
   return (
     <div className="container">
-      <div>
+      <motion.div variants={pageVariant} initial="initial" animate="animate" transition={pageVariant.transition}>
         <div className="mb-5 h-fit min-w-60">
-          <h3 className="py-1.5 w-[95%] text-white capitalize text-lg line pr-10">
+          <h3 className="py-1.5 w-[95%] text-primary capitalize text-lg line pr-10">
             step 2: choose fillings
           </h3>
-          <div className="grid justify-start gap-y-2 text-white/70 py-3 px-2">
+          <div className="grid justify-start gap-y-2 text-secondary py-3 px-2">
             {fillings.map((item) => {
+              const isActive = isFillings.includes(item);
               return (
-                <button
+                <motion.button whileHover={listVariant.whileHover} transition={listVariant.transition}
                   onClick={() => handleFillings(item)}
                   className={`${
-                    isFillings.includes(item) && "before:content-[">"] text-white underline"
-                  } capitalize text-start`}
+                    isActive && "text-primary"
+                  } capitalize items-center flex hover:text-yellow-500`}
                 >
+                  {isActive && <MdKeyboardArrowRight className="text-lg" />}
                   {item}
-                </button>
+                </motion.button>
               );
             })}
           </div>
         </div>
-        <SecondaryBtn link="/order" text="next" />
-      </div>
+        {isFillings.length > 0 && <SecondaryBtn link="/order" text="next" />}
+      </motion.div>
     </div>
   );
 };
