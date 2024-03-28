@@ -1,21 +1,19 @@
 import {SecondaryBtn} from "../components";
 import {MdKeyboardArrowRight} from "react-icons/md";
 import {motion} from "framer-motion";
-import { pageVariant } from "../utils/variance";
-
+import {listVariant, pageVariant} from "../utils/variance";
 
 const Base = ({isBase, handleBase}) => {
   const bases = ["classic", "thin & crispy", "thick crust"];
-
 
   return (
     <div className="container">
       <div>
         <motion.div
-        variants={pageVariant}
+          variants={pageVariant}
           initial="initial"
           animate="animate"
-          transition={pageVariant.transition}
+          exit="exit"
           className="mb-5 h-fit min-w-60"
         >
           <h3 className="py-1.5 w-[95%] text-primary capitalize text-lg line pr-10">
@@ -27,8 +25,8 @@ const Base = ({isBase, handleBase}) => {
               return (
                 <>
                   <motion.button
-                    whileHover={{scale: 1.3, originX: 0,}}
-                    transition={{type: "spring", stiffness: 300}}
+                    variants={listVariant}
+                    whileHover="hover"
                     onClick={() => handleBase(item)}
                     className={`${
                       isActive && "text-primary"
@@ -41,8 +39,8 @@ const Base = ({isBase, handleBase}) => {
               );
             })}
           </div>
+          {isBase && <SecondaryBtn link="/fillings" text="next" />}
         </motion.div>
-        {isBase && <SecondaryBtn link="/fillings" text="next" />}
       </div>
     </div>
   );

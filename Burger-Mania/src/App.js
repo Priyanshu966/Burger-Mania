@@ -1,4 +1,4 @@
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, useLocation} from "react-router-dom";
 import {AnimatePresence} from "framer-motion";
 import {Home, Base, Fillings, Order, Error} from "./pages";
 import {Header} from "./components";
@@ -22,27 +22,32 @@ function App() {
       setIsBurger({...isBurger, fillings: newItem});
     }
   };
+
+  const location = useLocation();
+  console.log(location);
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/base"
-          element={<Base isBase={isBurger.base} handleBase={handleBase} />}
-        />
-        <Route
-          path="/fillings"
-          element={
-            <Fillings
-              isFillings={isBurger.fillings}
-              handleFillings={handleFillings}
-            />
-          }
-        />
-        <Route path="/order" element={<Order {...isBurger} />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.key}>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/base"
+            element={<Base isBase={isBurger.base} handleBase={handleBase} />}
+          />
+          <Route
+            path="/fillings"
+            element={
+              <Fillings
+                isFillings={isBurger.fillings}
+                handleFillings={handleFillings}
+              />
+            }
+          />
+          <Route path="/order" element={<Order {...isBurger} />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </AnimatePresence>
     </>
   );
 }

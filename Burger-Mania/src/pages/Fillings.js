@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom";
 import {MdKeyboardArrowRight} from "react-icons/md";
-import { SecondaryBtn} from "../components";
-import { pageVariant,listVariant } from "../utils/variance";
-import { motion } from "framer-motion";
+import {SecondaryBtn} from "../components";
+import {pageVariant, listVariant} from "../utils/variance";
+import {motion} from "framer-motion";
 
 const Fillings = ({isFillings, handleFillings}) => {
   const fillings = [
@@ -15,7 +15,12 @@ const Fillings = ({isFillings, handleFillings}) => {
   ];
   return (
     <div className="container">
-      <motion.div variants={pageVariant} initial="initial" animate="animate" transition={pageVariant.transition}>
+      <motion.div
+        variants={pageVariant}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
         <div className="mb-5 h-fit min-w-60">
           <h3 className="py-1.5 w-[95%] text-primary capitalize text-lg line pr-10">
             step 2: choose fillings
@@ -24,7 +29,9 @@ const Fillings = ({isFillings, handleFillings}) => {
             {fillings.map((item) => {
               const isActive = isFillings.includes(item);
               return (
-                <motion.button whileHover={listVariant.whileHover} transition={listVariant.transition}
+                <motion.button
+                  variants={listVariant}
+                  whileHover="hover"
                   onClick={() => handleFillings(item)}
                   className={`${
                     isActive && "text-primary"

@@ -1,11 +1,15 @@
-import { motion } from "framer-motion";
-import { orderVariant } from "../utils/variance";
-
+import {motion} from "framer-motion";
+import {orderVariant} from "../utils/variance";
 
 const Order = ({base, fillings}) => {
   return (
     <div className="container">
-      <motion.div variants={orderVariant} initial="initial" animate="animate" transition={orderVariant.transition} className="grid place-items-center h-fit">
+      <motion.div
+        variants={orderVariant}
+        initial="initial"
+        animate="animate"
+        className="grid place-items-center h-fit"
+      >
         <h2 className="py-1.5 text-white capitalize text-lg  ">
           thank you for your order :)
         </h2>

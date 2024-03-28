@@ -9,7 +9,6 @@ const Home = () => {
       variants={mainVariant}
         initial="initial"
         animate="animate"
-        transition={mainVariant.transition}
         className="  grid place-items-center h-fit gap-y-8 md:gap-y-10"
       >
         <h2 className="text-2xl md:text-3xl capitalize tracking-wide text-primary">
