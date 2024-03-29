@@ -1,7 +1,7 @@
 import {Routes, Route, useLocation} from "react-router-dom";
 import {AnimatePresence} from "framer-motion";
 import {Home, Base, Fillings, Order, Error} from "./pages";
-import {Header} from "./components";
+import {Header, Modal} from "./components";
 import {useState} from "react";
 
 function App() {
@@ -9,6 +9,11 @@ function App() {
     base: "",
     fillings: [],
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const setModalOpen = () => {
+    setModalOpen(true);
+  };
 
   const handleBase = (item) => {
     setIsBurger({...isBurger, base: item});
@@ -23,12 +28,17 @@ function App() {
     }
   };
 
+  const resetBurger = () => {
+    setIsBurger({base: "", fillings: []});
+  };
+
   const location = useLocation();
   console.log(location);
   return (
     <>
       <Header />
-      <AnimatePresence mode="wait">
+      <Modal isModalOpen={isModalOpen} resetBurger={resetBurger}/>
+      <AnimatePresence mode="wait" onExitComplete={() => setIsModalOpen(false)}>
         <Routes location={location} key={location.key}>
           <Route path="/" element={<Home />} />
           <Route
@@ -44,7 +54,10 @@ function App() {
               />
             }
           />
-          <Route path="/order" element={<Order {...isBurger} />} />
+          <Route
+            path="/order"
+            element={<Order {...isBurger} setModalOpen={setIsModalOpen} />}
+          />
           <Route path="*" element={<Error />} />
         </Routes>
       </AnimatePresence>

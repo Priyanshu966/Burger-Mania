@@ -1,7 +1,14 @@
+import {useEffect} from "react";
 import {motion} from "framer-motion";
 import {orderVariant} from "../utils/variance";
 
-const Order = ({base, fillings}) => {
+const Order = ({base, fillings, setModalOpen}) => {
+  useEffect(() => {
+    setTimeout(() => {
+      setModalOpen(true);
+      console.log("hello");
+    }, 2000);
+  }, []);
   return (
     <div className="container">
       <motion.div
